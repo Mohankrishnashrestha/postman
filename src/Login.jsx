@@ -19,8 +19,8 @@ function Login() {
         "https://fakestoreapi.com/products",
         {
           title: values.name,
-          price: 29.99,
-          category: "electronics",
+          price: values.email,
+          category: values.Password,
           description: "Sample product description",
           image: "https://via.placeholder.com/150",
         },
@@ -39,7 +39,7 @@ function Login() {
       const response = await axios.put(
         `https://fakestoreapi.com/products/${data.data.id}`,
         {
-          title: " values.name",
+          title: " mohan krishna",
           price: 29.99,
           category: "electronics",
           description: "Sample product description",
@@ -92,7 +92,8 @@ function Login() {
             className="h-[500px] rounded-2xl"
           />
         </div>
-        <div className="p-5 flex items-center lg:w-[50%] hover:shadow-2xl hover:rounded-2xl h-[100%] duration-200">
+        <div className="p-5 flex flex-col items-center lg:w-[50%] hover:shadow-2xl hover:rounded-2xl h-[100%] duration-200">
+          <h2 className="py-5 text-2xl">Create an Account</h2>
           <Form
             onFinish={onFinish}
             style={{
@@ -126,6 +127,7 @@ function Login() {
             >
               <Input
                 placeholder="Email"
+                type="email"
                 style={{ width: "500px", height: "50px", borderRadius: "15px" }}
               />
             </Form.Item>
@@ -143,54 +145,55 @@ function Login() {
                 style={{ width: "500px", height: "50px", borderRadius: "15px" }}
               />
             </Form.Item>
+            <div className="lg:grid grid-cols-2">
+              <Form.Item>
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  style={{
+                    width: "200px",
+                    height: "50px",
+                    borderRadius: "15px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Sign In
+                </Button>
+              </Form.Item>
 
-            <Form.Item>
-              <Button
-                htmlType="submit"
-                type="primary"
-                style={{
-                  width: "300px",
-                  height: "50px",
-                  borderRadius: "15px",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                Sign In
-              </Button>
-            </Form.Item>
+              <Form.Item>
+                <Button
+                  onClick={put}
+                  type="primary"
+                  style={{
+                    width: "200px",
+                    height: "50px",
+                    borderRadius: "15px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Update
+                </Button>
+              </Form.Item>
 
-            <Form.Item>
-              <Button
-                onClick={put}
-                type="primary"
-                style={{
-                  width: "300px",
-                  height: "50px",
-                  borderRadius: "15px",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                Sign In
-              </Button>
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                onClick={del}
-                type="primary"
-                style={{
-                  width: "300px",
-                  height: "50px",
-                  borderRadius: "15px",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                delete
-              </Button>
-            </Form.Item>
+              <Form.Item>
+                <Button
+                  onClick={del}
+                  type="primary"
+                  style={{
+                    width: "200px",
+                    height: "50px",
+                    borderRadius: "15px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  delete
+                </Button>
+              </Form.Item>
+            </div>
           </Form>
         </div>
       </div>

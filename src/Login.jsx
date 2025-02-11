@@ -1,8 +1,10 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { newcontex } from "./Pagecontext";
 
 function Login() {
+  const { state, setState } = useContext(newcontex);
   const [data, setData] = useState();
   const get = async () => {
     try {
@@ -196,6 +198,10 @@ function Login() {
             </div>
           </Form>
         </div>
+      </div>
+      <div className="p-5">
+        <div>{state}</div>
+        <button onClick={() => setState(state + 1)}>On Click</button>
       </div>
     </div>
   );

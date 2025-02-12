@@ -1,30 +1,29 @@
 import Header from "./Header";
 import Login from "./Login";
 import { Route, Routes } from "react-router-dom";
-import { Pagecontext } from "./Pagecontext";
 import Home from "./comp/Home";
 import About from "./comp/About";
-
+import { PageProvider } from "./Pagecontext";
 function App() {
   return (
     <div>
       <Header />
       <Routes>
+        <Route path="/login/" element={<Login />} />
         <Route
-          path="/login/"
+          path="/"
           element={
-            <Pagecontext>
-              <Login />
-            </Pagecontext>
+            <PageProvider>
+              <Home />
+            </PageProvider>
           }
         />
-        <Route path="/" element={<Home />} />
         <Route
           path="/home"
           element={
-            <Pagecontext>
+            <PageProvider>
               <Home />
-            </Pagecontext>
+            </PageProvider>
           }
         />
         <Route path="/about" element={<About />} />

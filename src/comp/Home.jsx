@@ -1,26 +1,33 @@
-import { useContext, useEffect } from "react";
-import { newcontex } from "../Pagecontext";
-import axios from "axios";
+import { useContext } from "react";
+import { context } from "../Pagecontext";
 
 function Home() {
-  const { data, setData } = useContext(newcontex);
+  const { state, setState, change, theme, toggle } = useContext(context);
+  console.log("res:", change);
 
-  const handle = async () => {
-    try {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      setData(response);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    handle();
-  }, []);
-
-  console.log(data);
-
-  return <div>Home</div>;
+  return (
+    <div
+      style={{
+        color: theme.color,
+        backgroundColor: theme.background,
+        height: "100%",
+        width: "100%",
+      }}
+    >
+      <div>
+        <button className="border p-2" onClick={toggle}>
+          click to change the theme
+        </button>
+      </div>
+      {state}
+      <button onClick={() => setState(state + 1)}>click</button>
+      <ul>
+        {change.map((item, index) => (
+          <li key={index}>{item.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Home;

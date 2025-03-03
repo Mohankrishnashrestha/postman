@@ -5,6 +5,7 @@ import Home from "./comp/Home";
 import About from "./comp/About";
 import { PageProvider } from "./Pagecontext";
 import Register from "./protected/Register";
+import Login_pro from "./protected/Login_pro";
 function App() {
   return (
     <div>
@@ -29,6 +30,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login_pro" element={<Login_pro />} />
       </Routes>
     </div>
   );

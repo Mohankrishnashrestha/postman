@@ -1,19 +1,12 @@
 import { Button, Form, Input } from "antd";
 
-function Register() {
-  // const handle = async () => {
-  //   const response = await axios.post("$(API_BASE_URL)/api/v1/register");
-  // };
-
-  // useEffect(() => {
-  //   handle();
-  // }, []);
+function Login_pro() {
   const onFinish = (values) => {
     console.log(values);
   };
   return (
     <div className="max-w-6xl mx-auto justify-center items-center shadow flex">
-      <Form className="w-[50%] p-5" onFinish={onFinish}>
+      <Form className="w-[50%]" onFinish={onFinish}>
         <Form.Item
           label="Full Name"
           name="name"
@@ -50,22 +43,9 @@ function Register() {
         >
           <Input.Password />
         </Form.Item>
-
-        <Form.Item
-          label="Phone number"
-          name="ph_no"
-          rules={[
-            {
-              required: true,
-              message: "please enter the Phone number",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Register
+            Log In
           </Button>
         </Form.Item>
       </Form>
@@ -73,4 +53,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login_pro;

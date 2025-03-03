@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./comp/Home";
 import About from "./comp/About";
 import { PageProvider } from "./Pagecontext";
+import Register from "./protected/Register";
 function App() {
   return (
     <div>
@@ -27,6 +28,7 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

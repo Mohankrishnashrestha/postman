@@ -1,24 +1,34 @@
 import { Button, Form, Input } from "antd";
+import axios from "axios";
+import { API_BASE_URL } from "../../apiconfig";
 
 function Login_pro() {
   const onFinish = (values) => {
     console.log(values);
+    signin(values);
+  };
+  const signin = async (values) => {
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/api/v1/login/access-token`,
+        {
+          username: values.email,
+          password: values.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      console.log("Login Successful:", response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="max-w-6xl mx-auto justify-center items-center shadow flex">
       <Form className="w-[50%]" onFinish={onFinish}>
-        <Form.Item
-          label="Full Name"
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: "please enter the full name ",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
         <Form.Item
           label="Email"
           name="email"

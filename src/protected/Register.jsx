@@ -1,14 +1,10 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
 import { API_BASE_URL } from "../../apiconfig";
+import { Link, useNavigate } from "react-router-dom";
 function Register() {
-  // const handle = async () => {
-  //   const response = await axios.post("$(API_BASE_URL)/api/v1/register");
-  // };
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   handle();
-  // }, []);
   const onFinish = (values) => {
     console.log(values);
     handle(values);
@@ -29,6 +25,7 @@ function Register() {
           },
         }
       );
+      navigate("/login_pro");
       console.log(values);
       console.log("Registration Successful:", register.data);
     } catch (error) {
@@ -36,7 +33,7 @@ function Register() {
     }
   };
   return (
-    <div className="max-w-6xl mx-auto justify-center items-center shadow flex">
+    <div className="max-w-6xl mx-auto justify-center items-center shadow flex mt-[100px] p-5">
       <Form className="w-[50%]" onFinish={onFinish}>
         <Form.Item
           label="Full Name"
@@ -92,6 +89,9 @@ function Register() {
             Register
           </Button>
         </Form.Item>
+        <div>
+          Already have an account? <Link to="/login_pro">log in</Link>{" "}
+        </div>
       </Form>
     </div>
   );

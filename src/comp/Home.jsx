@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { context } from "../Pagecontext";
-import useStore from "../store/Store";
 
 function Home() {
   const { state, setState, change, theme, toggle } = useContext(context);

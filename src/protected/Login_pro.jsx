@@ -1,8 +1,10 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import axios from "axios";
 import { API_BASE_URL } from "../../apiconfig";
+import { useNavigate } from "react-router-dom";
 
 function Login_pro() {
+  const navigate = useNavigate();
   const onFinish = (values) => {
     console.log(values);
     signin(values);
@@ -21,13 +23,17 @@ function Login_pro() {
           },
         }
       );
+
+      localStorage.setItem("token", response.data.access_token);
       console.log("Login Successful:", response.data);
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      alert("Invalid email or password");
+      console.log(error.response.data.detail);
     }
   };
   return (
-    <div className="max-w-6xl mx-auto justify-center items-center shadow flex">
+    <div className="max-w-6xl mx-auto justify-center items-center shadow flex mt-[100px] p-5">
       <Form className="w-[50%]" onFinish={onFinish}>
         <Form.Item
           label="Email"

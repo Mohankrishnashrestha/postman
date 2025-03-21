@@ -1,10 +1,13 @@
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input } from "antd";
 import axios from "axios";
 import { API_BASE_URL } from "../../apiconfig";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Login_pro() {
   const navigate = useNavigate();
+  if (localStorage.getItem("token")) {
+    return <Navigate to="/home" />;
+  }
   const onFinish = (values) => {
     console.log(values);
     signin(values);
@@ -64,6 +67,9 @@ function Login_pro() {
             Log In
           </Button>
         </Form.Item>
+        <div>
+          Dont have any account? <Link to="/register">Register</Link>
+        </div>
       </Form>
     </div>
   );

@@ -1,9 +1,12 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
 import { API_BASE_URL } from "../../apiconfig";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 function Register() {
   const navigate = useNavigate();
+  if (localStorage.getItem("token")) {
+    return <Navigate to="/home" />;
+  }
 
   const onFinish = (values) => {
     console.log(values);
